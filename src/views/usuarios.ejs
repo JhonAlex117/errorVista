@@ -1,0 +1,68 @@
+
+<%- include('partials/_header') %>
+
+<div class="container"> <%# contenedor %>
+    <div class="row mt-5"> <%# contenedor de filas %>
+        <div class="col-md-10"> <%# tabla %>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>cedula</th>
+                        <th>nombre</th>
+                        <th>apellido</th>
+                        <th>usuario</th>
+                        <th>contraseña</th>
+                        <th>tipo</th>
+                        <th>accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(data) { %>
+                        <% for(var i=0; i<data.length; i++) { %>
+                            <tr>
+                                <td><%= data[i].cc_usuario %></td>
+                                <td><%= data[i].nombre_usuario %></td>
+                                <td><%= data[i].apellido_usuario %></td>
+                                <td><%= data[i].usuario %></td>
+                                <td><%= data[i].contraseña_usuario %></td>
+                                <td><%= data[i].tipo_usuario %></td>
+                                <td> <a href="delete/<%= data[i].cc_usuario %>" class="btn btn-danger"> Eliminar</a>
+                                <a href="update/<%= data[i].cc_usuario %>" class="btn btn-info"> actualizar</a></td>
+                            </tr>
+                        <% } %>
+                   <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"> <%# formulario %> 
+            <div class="card"> <%# div para margen del div %>
+                <div class="card-body"> <%# div para margen del div %>
+                    <form action="/add" method="POST">
+                        <div class="form-group"> <%# div para cada input %>
+                            <input type="number" name="cc_usuario" placeholder="cc" class="form-control">
+                        </div>
+                        <div class="form-group"> <%# div para cada input %>
+                            <input type="text" name="nombre_usuario" placeholder="nombre" class="form-control">
+                        </div>
+                        <div class="form-group"> <%# div para cada input %>
+                            <input type="text" name="apellido_usuario" placeholder="apellido" class="form-control">
+                        </div>
+                        <div class="form-group"> <%# div para cada input %>
+                            <input type="email" name="usuario" placeholder="usuario" class="form-control">
+                        </div>
+                        <div class="form-group"> <%# div para cada input %>
+                            <input type="password" name="contraseña_usuario" placeholder="contraseña" class="form-control">
+                        </div>
+                        <div class="form-group"> <%# div para cada input %>
+                            <input type="text" name="tipo_usuario" placeholder="tipo user" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn.primary"> guardar usuario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/_footer') %>
+
